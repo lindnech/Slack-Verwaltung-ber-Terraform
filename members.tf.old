@@ -1,0 +1,182 @@
+# list of user names, one for euch channel
+locals {
+  all = [
+    "user.1",
+    "user.2",
+    "user.3",
+    "user.4",
+    "user.5",
+    "user.6",
+    "user.7",
+    "user.8",
+    "user.9",
+    "user.10",
+    "user.11",
+    "user.12",
+  ]
+
+  helpdesk = [
+    "user.1",
+    "user.3",
+    "user.5",
+    "user.6",
+    "user.8",
+    "user.7",
+    "user.9",
+    "user.10",
+    "user.11",
+    "user.12",
+  ]
+
+  management_board = [
+    "user.1",
+    "user.2",
+    "user.9",
+    "user.10",
+    "user.4",
+  ]
+
+  marketing = [
+    "user.1",
+    "user.2",
+    "user.4",
+  ]
+
+  admins = [
+    "user.1",
+    "user.3",
+    "user.5",
+    "user.6",
+    "user.7",
+    "user.8",
+    "user.9",
+    "user.10",
+    "user.11",
+    "user.12",
+  ]
+
+  project_team = [
+    "user.6",
+    "user.7",
+    "user.8",
+    "user.10",
+    "user.1",
+  ]
+
+  support_team = [
+    "user.3",
+    "user.8",
+    "user.5",
+    "user.9",
+    "user.10",
+    "user.7",
+    "user.1",
+    "user.11",
+  ]
+
+  kunde1 = [
+    "user.7",
+    "user.8",
+    "user.10",
+    "user.5",
+    "user.3",
+  ]
+
+  buchhaltung = [
+    "user.1",
+    "user.2",
+  ]
+
+  ausbildung = [
+    "user.10"
+  ]
+
+  onboarding = [
+    "user.2",
+    "user.3"
+  ]
+
+  kunde2 = [
+    "name.nachname",
+    "max.musterman",
+    "user.2"
+  ]
+}
+
+# user id query via api
+data "slack_user" "all" {
+  for_each = toset(local.all)
+  email    = "${each.key}@domain.com"
+}
+
+data "slack_user" "management_board" {
+  for_each = toset(local.management_board)
+  email    = "${each.key}@domain.com"
+}
+
+data "slack_user" "marketing" {
+  for_each = toset(local.marketing)
+  email    = "${each.key}@domain.com"
+}
+
+data "slack_user" "admins" {
+  for_each = toset(local.admins)
+  email    = "${each.key}@domain.com"
+}
+
+data "slack_user" "project_team" {
+  for_each = toset(local.project_team)
+  email    = "${each.key}@domain.com"
+}
+
+data "slack_user" "support_team" {
+  for_each = toset(local.support_team)
+  email    = "${each.key}@domain.com"
+}
+
+data "slack_user" "helpdesk" {
+  for_each = toset(local.helpdesk)
+  email    = "${each.key}@domain.com"
+}
+
+data "slack_user" "kunde1" {
+  for_each = toset(local.kunde1)
+  email    = "${each.key}@domain.com"
+}
+
+data "slack_user" "buchhaltung" {
+  for_each = toset(local.buchhaltung)
+  email    = "${each.key}@domain.com"
+}
+
+data "slack_user" "ausbildung" {
+  for_each = toset(local.ausbildung)
+  email    = "${each.key}@domain.com"
+}
+
+data "slack_user" "onboarding" {
+  for_each = toset(local.onboarding)
+  email    = "${each.key}@domain.com"
+}
+
+data "slack_user" "kunde2" {
+  for_each = toset(local.kunde2)
+  email    = "${each.key}@domain.com"
+}
+
+# use for channel creation
+locals {
+  permanent_members_all              = [for u in data.slack_user.all : u.id]
+  permanent_members_management_board = [for u in data.slack_user.management_board : u.id]
+  permanent_members_marketing        = [for u in data.slack_user.marketing : u.id]
+  permanent_members_admins           = [for u in data.slack_user.admins : u.id]
+  permanent_members_project_team     = [for u in data.slack_user.project_team : u.id]
+  permanent_members_support_team     = [for u in data.slack_user.support_team : u.id]
+  permanent_members_helpdesk         = [for u in data.slack_user.helpdesk : u.id]
+  permanent_members_kunde1           = [for u in data.slack_user_kunde1 : u.id]
+  permanent_members_buchhaltung      = [for u in data.slack_user.buchhaltung : u.id]
+  permanent_members_ausbildung       = [for u in data.slack_user.ausbildung : u.id]
+  permanent_members_onboarding       = [for u in data.slack_user.onboarding : u.id]
+  permanent_members_kunde2           = [for u in data.slack_user.kunde2 : u.id]
+}
+

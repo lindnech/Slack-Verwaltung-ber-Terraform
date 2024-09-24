@@ -1,0 +1,141 @@
+resource "slack_conversation" "internal" {
+  name              = "internal"
+  topic             = "internal meetings and discussions"
+  purpose           = "keep it professional"
+  permanent_members = local.permanent_members_all
+  is_private        = false
+}
+
+resource "slack_conversation" "management_board" {
+  name              = "management-board"
+  topic             = "management discussions"
+  permanent_members = local.permanent_members_management_board
+  is_private        = false
+}
+
+resource "slack_conversation" "marketing" {
+  name              = "marketing"
+  topic             = "marketing discussions"
+  permanent_members = local.permanent_members_marketing
+  is_private        = false
+}
+
+resource "slack_conversation" "admins" {
+  name              = "admins"
+  topic             = "admins"
+  permanent_members = local.permanent_members_admins
+  is_private        = false
+}
+
+resource "slack_conversation" "versity" {
+  name              = "versity"
+  topic             = "helpful links and topics about certifications and stuff to learn"
+  permanent_members = local.permanent_members_all
+  is_private        = false
+}
+
+resource "slack_conversation" "ausbildung" {
+  name              = "ausbildung"
+  topic             = "Alles was mit Azubis zu tun hat"
+  permanent_members = local.permanent_members_ausbildung
+  is_private        = false
+}
+
+resource "slack_conversation" "_1st-level" {
+  name              = "1st-level"
+  topic             = "gitlab label notifications 1st-level"
+  permanent_members = local.permanent_members_support_team
+  is_private        = false
+}
+
+resource "slack_conversation" "_2nd-level" {
+  name              = "2nd-level"
+  topic             = "gitlab label notifications 2nd-level"
+  permanent_members = local.permanent_members_support_team
+  is_private        = false
+}
+
+resource "slack_conversation" "_3rd-level" {
+  name              = "3rd-level"
+  topic             = "gitlab label notifications 3rd-level"
+  permanent_members = local.permanent_members_project_team
+  is_private        = false
+}
+
+resource "slack_conversation" "development" {
+  name              = "development"
+  topic             = "gitlab label notifications development"
+  permanent_members = local.permanent_members_project_team
+  is_private        = false
+}
+
+resource "slack_conversation" "gitlab" {
+  name              = "gitlab"
+  topic             = "gitlab general notifications"
+  permanent_members = local.permanent_members_admins
+  is_private        = false
+}
+
+resource "slack_conversation" "monitoring" {
+  name              = "monitoring"
+  topic             = "monitoring notifications and alerts"
+  permanent_members = local.permanent_members_admins
+  is_private        = false
+}
+
+resource "slack_conversation" "vulnerabilities" {
+  name              = "vulnerabilities"
+  topic             = "various CVE trackers"
+  permanent_members = local.permanent_members_admins
+  is_private        = false
+}
+
+resource "slack_conversation" "support-team" {
+  name              = "support"
+  topic             = "for support team meetings"
+  permanent_members = local.permanent_members_support_team
+  is_private        = false
+}
+
+resource "slack_conversation" "project-team" {
+  name              = "project"
+  topic             = "for project team meetings"
+  permanent_members = local.permanent_members_project_team
+  is_private        = false
+}
+
+resource "slack_conversation" "helpdesk" {
+  name              = "helpdesk"
+  topic             = "zammad notifications"
+  permanent_members = local.permanent_members_helpdesk
+  is_private        = false
+}
+
+resource "slack_conversation" "kunde1" {
+  name              = "kunde1"
+  topic             = "Kundi1"
+  permanent_members = local.permanent_members_kunde1
+  is_private        = false
+}
+
+resource "slack_conversation" "buchhaltung" {
+  name              = "buchhaltung"
+  topic             = "Buchhaltungs Themen"
+  permanent_members = local.permanent_members_buchhaltung
+  is_private        = false
+}
+
+resource "slack_conversation" "onboarding" {
+  name              = "onboarding"
+  topic             = "onboarding"
+  permanent_members = local.permanent_members_onboarding
+  is_private        = false
+}
+
+resource "slack_conversation" "kunde2" {
+  name              = "kunde2"
+  topic             = "kunde2"
+  permanent_members = local.permanent_members_kunde2
+  is_private        = false
+}
+
